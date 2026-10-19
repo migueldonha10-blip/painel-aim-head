@@ -1,0 +1,70 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel AIM HEAD</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#40206e,#090817 65%);color:#fff;font-family:Arial,sans-serif;padding:20px}
+.card{max-width:430px;margin:25px auto;padding:24px;border:1px solid #9d5cff;border-radius:22px;background:#100d23eF;box-shadow:0 0 25px #883cff66}
+h1{text-align:center;color:#d5a5ff;text-shadow:0 0 14px #a44dff}
+.sub{text-align:center;color:#b9a7d7;font-size:13px}
+input,button,select{width:100%;padding:13px;margin:8px 0;border-radius:10px;border:1px solid #a86cff;background:#21183b;color:white;font-size:15px}
+button{background:linear-gradient(90deg,#702cff,#bd42ff);font-weight:bold;cursor:pointer}
+.option{display:flex;align-items:center;gap:10px;margin:13px 0;padding:12px;background:#1b1530;border-radius:10px}
+.option input{width:19px;margin:0;accent-color:#bb64ff}
+#panel{display:none}
+.small{font-size:12px;color:#bcaed3;text-align:center}
+</style>
+</head>
+<body>
+<div class="card" id="login">
+<h1>✦ AIM HEAD ✦</h1>
+<p class="sub">GALAXY PANEL • margiela..33</p>
+<input id="key" type="password" placeholder="Digite a Key">
+<button onclick="entrar()">ENTRAR</button>
+<p class="small" id="msg">Acesso demonstrativo</p>
+</div>
+
+<div class="card" id="panel">
+<h1>✦ AIM HEAD ✦</h1>
+<p class="sub">Criador: margiela..33</p>
+<label>Cor do painel</label>
+<select id="cor" onchange="mudarCor()">
+<option value="#9d5cff">Galáxia roxa</option>
+<option value="#00d9ff">Azul cósmico</option>
+<option value="#ff36b7">Rosa neon</option>
+<option value="#38ff9c">Verde neon</option>
+</select>
+<div id="opts"></div>
+<p class="small">Demonstração visual. Não modifica o Free Fire.</p>
+<button onclick="sair()">SAIR</button>
+</div>
+
+<script>
+function entrar(){
+ if(document.getElementById('key').value==='01'){
+ document.getElementById('login').style.display='none';
+ document.getElementById('panel').style.display='block';
+ }else{
+ document.getElementById('msg').textContent='Key incorreta!';
+ }
+}
+const nomes=['Aimbot (visual)','No Recoil (visual)','ESP Line','ESP Box','ESP Esqueleto','ESP Name','AimFOV','Atravessar paredes (visual)'];
+document.getElementById('opts').innerHTML=nomes.map((n,i)=>`<label class="option"><input type="checkbox" id="o${i}"><span>${n}</span></label>`).join('');
+function mudarCor(){
+ const c=document.getElementById('cor').value;
+ document.querySelectorAll('.card').forEach(e=>e.style.borderColor=c);
+ document.querySelectorAll('button,input,select').forEach(e=>e.style.borderColor=c);
+}
+function sair(){
+ document.getElementById('panel').style.display='none';
+ document.getElementById('login').style.display='block';
+ document.getElementById('key').value='';
+}
+</script>
+</body>
+</html>
+```
